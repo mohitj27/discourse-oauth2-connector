@@ -14,12 +14,16 @@
     "strict": true,
     "outDir": "dist",
     "rootDir": "src",
-    "sourceRoot": "src",
-    "baseUrl": "src"
+    "sourceRoot": ".",
+    "baseUrl": ".",
+    "typeRoots": [
+      "types"
+    ]
   },
   "compileOnSave": true,
   "include": [
-    "src"
+    "src",
+    "types"
   ],
   "exclude": [
     "node_modules",

@@ -5,6 +5,8 @@
   "main": "dist/server.js",
   "scripts": {
     "test": "echo 'test'",
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
     "build": "tsc",
     "prepublishOnly": "npm run build",
     "prestart": "npm run build",
@@ -31,13 +33,16 @@
   },
   "homepage": "https://github.com/coding-blocks/discourse-oauth2-connector#readme",
   "devDependencies": {
+    "@types/express-session": "^1.15.8",
     "@types/passport": "^0.4.5",
+    "@types/passport-oauth2": "^1.4.4",
     "typescript": "^2.8.3"
   },
   "dependencies": {
     "@types/debug": "0.0.30",
     "debug": "^3.1.0",
     "express": "^4.16.3",
+    "express-session": "^1.15.6",
     "passport": "^0.4.0",
     "passport-oneauth": "^1.0.5",
     "tslib": "^1.9.0"
