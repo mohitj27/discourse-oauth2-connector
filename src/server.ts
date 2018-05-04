@@ -1,5 +1,7 @@
 import express, {Application} from 'express'
 import session from 'express-session'
+import {passport} from './oneauth'
+import {route as loginRoute} from './login'
 import debug from 'debug'
 const log = debug('discourse-oauth2:server')
 
@@ -12,6 +14,11 @@ app.use(session({
   saveUninitialized: true,
   secret: <string>process.env.SESSION_SECRET
 }))
+
+app.use(passport.initialize())
+app.use(passport.session())
+
+app.use('/login', loginRoute)
 
 app.listen(process.env.PORT, () => {
   log(`Server started on http://localhost:${process.env.PORT}`)
