@@ -114,3 +114,6 @@ fabric.properties
 # Editor-based Rest Client
 .idea/httpRequests
 
+# Application
+dist
+config.js

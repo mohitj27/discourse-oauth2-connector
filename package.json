@@ -4,7 +4,13 @@
   "description": "Connect Discourse to a standard Oauth2 system",
   "main": "dist/server.js",
   "scripts": {
-    "test": "echo 'test'"
+    "test": "echo 'test'",
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "prestart": "npm run build",
+    "start": "node -r config.js dist/server.js",
+    "prestart:dev": "npm run build",
+    "start:dev": "DEBUG=* node -r ./config.sample.js dist/server.js"
   },
   "repository": {
     "type": "git",
@@ -29,8 +35,11 @@
     "typescript": "^2.8.3"
   },
   "dependencies": {
+    "@types/debug": "0.0.30",
+    "debug": "^3.1.0",
     "express": "^4.16.3",
     "passport": "^0.4.0",
-    "passport-oneauth": "^1.0.5"
+    "passport-oneauth": "^1.0.5",
+    "tslib": "^1.9.0"
   }
 }
