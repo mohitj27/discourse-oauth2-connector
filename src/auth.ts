@@ -5,7 +5,7 @@ import {ensureLoggedIn} from 'connect-ensure-login'
 import {OneauthProfile} from 'passport-oneauth'
 
 const route = Router()
-const sso = new DiscourseSSO(<string>process.env.DISCOURSE_SSO_SECRET)
+const dSSO = new DiscourseSSO(<string>process.env.DISCOURSE_SSO_SECRET)
 const discourseRedirectPath = url.resolve(process.env.DISCOURSE_SITE_URL!, '/session/sso_login')
 
 route.get('/',
@@ -18,12 +18,12 @@ route.get('/',
       //TODO: Flash verified email reason
       return res.redirect('/login/fail')
     }
-    if (!sso.validate(sso, sig)) {
+    if (!dSSO.validate(sso, sig)) {
       //TODO: Flash PAYLOAD verification fail message
       return res.redirect('/login/fail')
     }
-    const nonce = sso.getNonce(sso)
-    const loginString = sso.buildLoginString({
+    const nonce = dSSO.getNonce(sso)
+    const loginString = dSSO.buildLoginString({
       nonce,
       email: user.verifiedemail,
       external_id: user.id,
