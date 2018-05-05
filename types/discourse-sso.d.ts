@@ -5,7 +5,10 @@ declare module 'discourse-sso' {
       external_id: string,
       email: string,
       username?: string,
-      name?: string
+      name?: string,
+      avatar_url?: string,
+      add_groups?: string[],
+      remove_groups?: string[]
     }
   }
   class discourseSSO {
