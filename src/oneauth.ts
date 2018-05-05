@@ -17,7 +17,7 @@ const oneauthStrategy = new OneauthStrategy({
   authorizationURL: 'https://account.codingblocks.com/oauth/authorize',
   callbackURL: url.resolve(process.env.SERVER_URL, '/login/callback'),
   tokenURL: 'https://account.codingblocks.com/oauth/token',
-  include: ['a']
+  include: ['lms']
 }, (accessToken: string, refreshToken: string, profile: OneauthProfile, done: VerifyCallback) => {
 
   if (!profile.verifiedemail) {
