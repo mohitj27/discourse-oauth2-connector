@@ -1,12 +1,12 @@
 import {Request, Response, Router} from 'express'
 import DiscourseSSO from 'discourse-sso'
-import path from 'path'
+import url from 'url'
 import {ensureLoggedIn} from 'connect-ensure-login'
 import {OneauthProfile} from 'passport-oneauth'
 
 const route = Router()
 const sso = new DiscourseSSO(<string>process.env.DISCOURSE_SSO_SECRET)
-const discourseRedirectPath = path.join(process.env.DISCOURSE_SITE_URL!, '/session/sso_login')
+const discourseRedirectPath = url.resolve(process.env.DISCOURSE_SITE_URL!, '/session/sso_login')
 
 route.get('/',
   ensureLoggedIn('/login'), // Ensure user is logged in before authing for Discourse
