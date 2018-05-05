@@ -48,7 +48,7 @@
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "passport": "^0.4.0",
-    "passport-oneauth": "^1.2.2",
+    "passport-oneauth": "^1.2.4",
     "tslib": "^1.9.0"
   }
 }

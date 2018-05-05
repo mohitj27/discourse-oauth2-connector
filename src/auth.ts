@@ -28,7 +28,9 @@ route.get('/',
       email: user.verifiedemail,
       external_id: user.id,
       username: user.username,
-      name: user.name
+      name: user.name,
+      moderator: user.role === 'employee',
+      admin: user.role === 'admin'
     })
     res.redirect(discourseRedirectPath + '?' + loginString)
 

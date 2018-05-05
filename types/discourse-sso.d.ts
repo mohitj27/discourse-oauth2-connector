@@ -4,6 +4,8 @@ declare module 'discourse-sso' {
       nonce: string,
       external_id: string,
       email: string,
+      admin?: boolean,
+      moderator?: boolean,
       username?: string,
       name?: string,
       avatar_url?: string,
