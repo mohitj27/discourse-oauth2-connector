@@ -18,7 +18,7 @@ app.use(session({
 }))
 
 app.use(passport.initialize())
-// Disable self session auth. Login via Oneauth always
+//TODO: Disable self session auth. Login via Oneauth always
 app.use(passport.session())
 
 app.use('/login', loginRoute)

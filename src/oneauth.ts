@@ -4,11 +4,12 @@ import url from 'url'
 import {VerifyCallback} from 'passport-oauth2'
 
 passport.serializeUser(((user: OneauthProfile, done) => {
-  done(user.id)
+  done(null, JSON.stringify(user))
 }))
 
 passport.deserializeUser((id, done) => {
-
+  //TODO: Fix memory leak here
+  done(null, JSON.parse(id as string))
 })
 
 const oneauthStrategy = new OneauthStrategy({

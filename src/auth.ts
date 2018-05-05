@@ -11,18 +11,18 @@ const discourseRedirectPath = url.resolve(process.env.DISCOURSE_SITE_URL!, '/ses
 route.get('/',
   ensureLoggedIn('/login'), // Ensure user is logged in before authing for Discourse
   (req: Request, res: Response) => {
-    const {PAYLOAD, SIG} = req.query
+    const {sso, sig} = req.query
     const user = req.user as OneauthProfile
 
     if (!user.verifiedemail) {
       //TODO: Flash verified email reason
       return res.redirect('/login/fail')
     }
-    if (!sso.validate(PAYLOAD, SIG)) {
+    if (!sso.validate(sso, sig)) {
       //TODO: Flash PAYLOAD verification fail message
       return res.redirect('/login/fail')
     }
-    const nonce = sso.getNonce(PAYLOAD)
+    const nonce = sso.getNonce(sso)
     const loginString = sso.buildLoginString({
       nonce,
       email: user.verifiedemail,
