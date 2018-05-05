@@ -10,7 +10,7 @@
     "build": "tsc",
     "prepublishOnly": "npm run build",
     "prestart": "npm run build",
-    "start": "node -r config.js dist/server.js",
+    "start": "node -r ./config.js dist/server.js",
     "prestart:dev": "npm run build",
     "start:dev": "DEBUG=* node -r ./config.sample.js dist/server.js"
   },
