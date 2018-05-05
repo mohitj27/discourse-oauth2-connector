@@ -7,7 +7,7 @@ route.get('/', passport.authenticate('oneauth'))
 
 route.get('/callback', passport.authenticate('oneauth', {
   failureRedirect: '/login/fail',
-  successReturnToOrRedirect: 'https://account.codingblocks.com'
+  successReturnToOrRedirect: process.env.DISCOURSE_SITE_URL
 }))
 
 export {

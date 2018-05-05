@@ -29,6 +29,7 @@ route.get('/',
       external_id: user.id,
       username: user.username,
       name: user.name,
+      avatar_url: user.photo,
       moderator: user.role === 'employee',
       admin: user.role === 'admin'
     })

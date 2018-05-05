@@ -3,8 +3,8 @@ import {OneauthProfile, Strategy as OneauthStrategy} from 'passport-oneauth'
 import path from 'path'
 import {VerifyCallback} from 'passport-oauth2'
 
-passport.serializeUser(((user, done) => {
-  done(user)
+passport.serializeUser(((user: OneauthProfile, done) => {
+  done(user.id)
 }))
 
 passport.deserializeUser((id, done) => {
@@ -15,7 +15,7 @@ const oneauthStrategy = new OneauthStrategy({
   clientID: process.env.ONEAUTH_CLIENT_ID,
   clientSecret: process.env.ONEAUTH_CLIENT_SECRET,
   authorizationURL: 'https://account.codingblocks.com/oauth/authorize',
-  callbackURL: path.join(process.env.SERVER_URL, 'callback'),
+  callbackURL: path.join(process.env.SERVER_URL, 'login/callback'),
   tokenURL: 'https://account.codingblocks.com/oauth/token',
   include: ['a']
 }, (accessToken: string, refreshToken: string, profile: OneauthProfile, done: VerifyCallback) => {
