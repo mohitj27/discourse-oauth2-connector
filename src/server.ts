@@ -30,6 +30,9 @@ app.use(passport.session())
 
 app.use('/login', loginRoute)
 app.use('/auth', authRoute)
+app.get('/', (req, res) => {
+  res.redirect(process.env.DISCOURSE_SITE_URL)
+})
 
 app.listen(process.env.PORT, () => {
   log(`Server started on http://localhost:${process.env.PORT}`)
