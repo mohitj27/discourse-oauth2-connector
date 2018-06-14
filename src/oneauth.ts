@@ -23,7 +23,7 @@ const oneauthStrategy = new OneauthStrategy({
 
   if (!profile.verifiedemail) {
     // Do not allow people without verified emails to Discourse
-    return done(new Error("Email not verified"))
+    return done(new Error("Email not verified. Please visit https://account.codingblocks.com to verify"))
   }
 
   done(null, profile)

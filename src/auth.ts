@@ -30,7 +30,7 @@ route.get('/',
       username: user.username,
       name: user.name,
       avatar_url: user.photo,
-      moderator: user.role === 'employee',
+      moderator: user.role === 'employee' || user.role === 'admin' || user.role === 'intern',
       admin: user.role === 'admin'
     })
     res.redirect(discourseRedirectPath + '?' + loginString)
