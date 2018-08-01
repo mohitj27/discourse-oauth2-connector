@@ -1,5 +1,7 @@
 import express, {Application} from 'express'
 import session from 'express-session'
+import ihbs from 'express-handlebars' 
+import path from 'path'
 import memorystore from 'memorystore'
 import {passport} from './oneauth'
 import {route as loginRoute} from './login'
@@ -10,9 +12,14 @@ const MemoryStore = memorystore(session)
 
 const app: Application = express()
 
+
+const hbs = ihbs.create();
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-
+// app.use(express.static(path.join(__dirname, '../public_static')))
 app.use(session({
   store: new MemoryStore({
     checkPeriod: 1000 * 60 * 60 * 10, // Check till 10 minutes,
